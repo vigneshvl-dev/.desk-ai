@@ -26,6 +26,7 @@ body {
 }
 
 /* ── Loader Container ──────────────────────────────────────────────────── */
+.loader-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -36,6 +37,7 @@ body {
   justify-content: center;
   perspective: 1000px;
   z-index: 1000;
+}
 }
 
 .robot-bg {
