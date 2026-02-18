@@ -26,7 +26,6 @@ body {
 }
 
 /* ── Loader Container ──────────────────────────────────────────────────── */
-.loader-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -36,7 +35,12 @@ body {
   align-items: center;
   justify-content: center;
   perspective: 1000px;
-  z-index: 10;
+  z-index: 1000;
+}
+
+.robot-bg {
+  pointer-events: none;
+  z-index: 1;
 }
 
 .loading-card {
