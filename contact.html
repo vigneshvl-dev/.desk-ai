@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact – D.esk AI | Stella Mary's College of Engineering</title>
+    <meta name="description"
+        content="Contact D.esk AI support team or reach Stella Mary's College of Engineering directly." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+</head>
+
+<body>
+
+    <canvas id="neural-bg"></canvas>
+
+    <div class="page-wrapper">
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <a href="home.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#baff8d" stroke-width="2">
+                        <polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9" />
+                    </svg>
+                </div>
+                <div class="nav-brand">
+                    <span class="nav-brand-name">D.esk <span>AI</span></span>
+                    <span class="nav-brand-sub">Stella Mary's College of Engineering</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="home.html" id="nav-home">🏠 Home</a></li>
+                <li><a href="services.html" id="nav-services">⚡ Services</a></li>
+                <li><a href="contact.html" class="active" id="nav-contact">📬 Contact</a></li>
+                <li><a href="account.html" id="nav-account">👤 Account</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="login.html" class="nav-btn nav-btn-outline" id="btn-login">Sign In</a>
+                <a href="account.html" class="nav-btn nav-btn-primary" id="btn-dashboard">Dashboard</a>
+            </div>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </nav>
+        <div class="mobile-nav" id="mobile-nav">
+            <a href="home.html">🏠 Home</a>
+            <a href="services.html">⚡ Services</a>
+            <a href="contact.html">📬 Contact</a>
+            <a href="account.html">👤 Account</a>
+            <a href="login.html">🔑 Sign In</a>
+        </div>
+
+        <!-- PAGE HEADER -->
+        <div class="page-header">
+            <div class="badge badge-green fade-in-up delay-1">📬 Get In Touch</div>
+            <h1 class="page-title fade-in-up delay-2">Contact <span class="green">Us</span></h1>
+            <p class="page-desc fade-in-up delay-3">Have questions? We're here to help. Reach out to D.esk AI support or
+                the college directly.</p>
+        </div>
+
+        <!-- CONTACT LAYOUT -->
+        <div class="contact-layout">
+
+            <!-- Contact Info Cards -->
+            <div class="contact-info fade-in-up delay-1">
+
+                <div class="info-card glass-card">
+                    <div class="info-icon">📍</div>
+                    <div class="info-content">
+                        <h4 class="info-title">Address</h4>
+                        <p class="info-text">Stella Mary's College of Engineering<br />Azhikal, Kallukuzhi,
+                            Tirunelveli<br />Tamil Nadu – 627 012</p>
+                    </div>
+                </div>
+
+                <div class="info-card glass-card">
+                    <div class="info-icon">📞</div>
+                    <div class="info-content">
+                        <h4 class="info-title">Phone</h4>
+                        <p class="info-text">Main Office: 0462-2561000<br />Admissions: 0462-2561001<br />Placement:
+                            0462-2561002</p>
+                    </div>
+                </div>
+
+                <div class="info-card glass-card">
+                    <div class="info-icon">📧</div>
+                    <div class="info-content">
+                        <h4 class="info-title">Email</h4>
+                        <p class="info-text">
+                            info@stellamarys.edu.in<br />admissions@stellamarys.edu.in<br />placement@stellamarys.edu.in
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-card glass-card">
+                    <div class="info-icon">🕐</div>
+                    <div class="info-content">
+                        <h4 class="info-title">Office Hours</h4>
+                        <p class="info-text">Monday – Friday: 9:00 AM – 5:00 PM<br />Saturday: 9:00 AM – 1:00
+                            PM<br />Sunday: Closed</p>
+                    </div>
+                </div>
+
+                <!-- Social links -->
+                <div class="social-links glass-card">
+                    <h4 class="info-title" style="margin-bottom:14px">Follow Us</h4>
+                    <div class="social-grid">
+                        <a href="#" class="social-btn" id="social-facebook">📘 Facebook</a>
+                        <a href="#" class="social-btn" id="social-instagram">📸 Instagram</a>
+                        <a href="#" class="social-btn" id="social-linkedin">💼 LinkedIn</a>
+                        <a href="#" class="social-btn" id="social-youtube">▶️ YouTube</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-wrap fade-in-up delay-2">
+                <div class="glass-card contact-form-card">
+                    <h2 class="form-title">Send a Message</h2>
+                    <p class="form-sub">We'll get back to you within 24 hours</p>
+
+                    <form id="contact-form" onsubmit="submitContact(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Full Name *</label>
+                                <input type="text" id="cf-name" class="input-field" placeholder="Your full name"
+                                    required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Student ID</label>
+                                <input type="text" id="cf-id" class="input-field" placeholder="e.g. 24CSE001" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" id="cf-email" class="input-field" placeholder="your@email.com"
+                                required />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Department</label>
+                            <select id="cf-dept" class="input-field">
+                                <option value="">Select Department</option>
+                                <option>CSE</option>
+                                <option>ECE</option>
+                                <option>EEE</option>
+                                <option>MECH</option>
+                                <option>CIVIL</option>
+                                <option>IT</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Subject *</label>
+                            <select id="cf-subject" class="input-field" required>
+                                <option value="">Select Subject</option>
+                                <option>Academic Query</option>
+                                <option>Attendance Issue</option>
+                                <option>Exam Related</option>
+                                <option>Hostel Query</option>
+                                <option>Placement Query</option>
+                                <option>Document Request</option>
+                                <option>D.esk AI Feedback</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Message *</label>
+                            <textarea id="cf-message" class="input-field" rows="5"
+                                placeholder="Describe your query in detail..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Priority</label>
+                            <div class="priority-options">
+                                <label class="priority-opt" id="prio-low">
+                                    <input type="radio" name="priority" value="low" checked />
+                                    <span>🟢 Low</span>
+                                </label>
+                                <label class="priority-opt" id="prio-medium">
+                                    <input type="radio" name="priority" value="medium" />
+                                    <span>🟡 Medium</span>
+                                </label>
+                                <label class="priority-opt" id="prio-high">
+                                    <input type="radio" name="priority" value="high" />
+                                    <span>🔴 High</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary"
+                            style="width:100%;justify-content:center;padding:14px" id="submit-btn">
+                            <span id="submit-text">📤 Send Message</span>
+                        </button>
+                    </form>
+
+                    <!-- Success state -->
+                    <div class="form-success" id="form-success" style="display:none">
+                        <div class="success-icon">✅</div>
+                        <h3>Message Sent!</h3>
+                        <p>Thank you for reaching out. We'll respond within 24 hours.</p>
+                        <button class="btn btn-ghost" onclick="resetForm()" style="margin-top:16px">Send
+                            Another</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="faq-header">
+                <h2 class="faq-title">Frequently Asked <span class="green">Questions</span></h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item glass-card" onclick="toggleFaq(this)">
+                    <div class="faq-q">How do I check my attendance? <span class="faq-arrow">▼</span></div>
+                    <div class="faq-a">Log in to the student portal at college website. Navigate to "Attendance"
+                        section. Attendance is updated every Monday.</div>
+                </div>
+                <div class="faq-item glass-card" onclick="toggleFaq(this)">
+                    <div class="faq-q">How do I apply for a Bonafide Certificate? <span class="faq-arrow">▼</span></div>
+                    <div class="faq-a">Visit the college office with your ID card. Fill the application form. The
+                        certificate will be ready in 2–3 working days. Fee: ₹50.</div>
+                </div>
+                <div class="faq-item glass-card" onclick="toggleFaq(this)">
+                    <div class="faq-q">What is the minimum attendance for exams? <span class="faq-arrow">▼</span></div>
+                    <div class="faq-a">Students must maintain a minimum of 75% attendance to be eligible for semester
+                        end examinations. Below this, students will be detained.</div>
+                </div>
+                <div class="faq-item glass-card" onclick="toggleFaq(this)">
+                    <div class="faq-q">How do I contact my department HOD? <span class="faq-arrow">▼</span></div>
+                    <div class="faq-a">You can find HOD contact details in the Faculty Directory under Services. Email
+                        format: hod.dept@stellamarys.edu.in</div>
+                </div>
+                <div class="faq-item glass-card" onclick="toggleFaq(this)">
+                    <div class="faq-q">When are placement drives conducted? <span class="faq-arrow">▼</span></div>
+                    <div class="faq-a">Placement drives are conducted from October to March. Pre-placement training
+                        starts in 3rd year. Check the placement cell notice board for updates.</div>
+                </div>
+                <div class="faq-item glass-card" onclick="toggleFaq(this)">
+                    <div class="faq-q">How does D.esk AI work? <span class="faq-arrow">▼</span></div>
+                    <div class="faq-a">D.esk AI uses advanced natural language processing to answer your college-related
+                        queries. It's trained on Stella Mary's College data and provides instant, accurate responses
+                        24/7.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-brand">D.esk <span>AI</span></div>
+            <div class="footer-links">
+                <a href="home.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+                <a href="login.html">Login</a>
+            </div>
+            <p class="footer-text">© 2025 D.esk AI · Stella Mary's College of Engineering · by smce students</p>
+        </footer>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="js/global.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+
+</html>

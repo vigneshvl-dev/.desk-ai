@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D.esk AI – Stella Mary's College of Engineering</title>
+    <meta name="description" content="Welcome to D.esk AI – Your AI-powered college assistant." />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/loading.css" />
+</head>
+
+<body>
+
+    <div class="loader-container">
+        <!-- Main Loading Card -->
+        <div class="loading-card glass-card">
+
+            <div class="logo-area">
+                <div class="college-logo">
+                    <!-- Placeholder SVG for the logo from image -->
+                    <svg viewBox="0 0 100 100" width="80" height="80">
+                        <circle cx="50" cy="50" r="45" fill="white" />
+                        <path d="M50 15 L85 75 L15 75 Z" fill="#2d5a3f" />
+                        <circle cx="50" cy="50" r="10" fill="gold" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <h1 class="welcome-text">Welcome to D.esk AI</h1>
+                <p class="subtitle">AI-Powered College Assistant</p>
+                <p class="college-name">Stella Mary's College Of Engineering</p>
+            </div>
+
+            <div class="loading-status">
+                <div class="dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot big"></span>
+                </div>
+                <div class="status-text">LOADING D.ESK AI...</div>
+            </div>
+
+            <!-- Hidden Enter button that appears after loading -->
+            <button id="enter-campus" class="enter-btn" style="display:none">
+                Enter Campus
+            </button>
+        </div>
+    </div>
+
+    <!-- Background Robot (Faint/Animated) -->
+    <div class="robot-bg">
+        <div class="robot-body">
+            <div class="robot-head">
+                <div class="robot-eye robot-eye-l"></div>
+                <div class="robot-eye robot-eye-r"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/loading.js"></script>
+</body>
+
+</html>

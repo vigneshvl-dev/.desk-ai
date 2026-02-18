@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services – D.esk AI | Stella Mary's College of Engineering</title>
+    <meta name="description"
+        content="Explore D.esk AI services – Academic hub, AI study suite, college services, and smart intelligence tools." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/services.css" />
+</head>
+
+<body>
+
+    <canvas id="neural-bg"></canvas>
+
+    <div class="page-wrapper">
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <a href="home.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#baff8d" stroke-width="2">
+                        <polygon points="12,2 15,9 22,9 16.5,13.5 18.5,21 12,17 5.5,21 7.5,13.5 2,9 9,9" />
+                    </svg>
+                </div>
+                <div class="nav-brand">
+                    <span class="nav-brand-name">D.esk <span>AI</span></span>
+                    <span class="nav-brand-sub">Stella Mary's College of Engineering</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="home.html" id="nav-home">🏠 Home</a></li>
+                <li><a href="services.html" class="active" id="nav-services">⚡ Services</a></li>
+                <li><a href="contact.html" id="nav-contact">📬 Contact</a></li>
+                <li><a href="account.html" id="nav-account">👤 Account</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="login.html" class="nav-btn nav-btn-outline" id="btn-login">Sign In</a>
+                <a href="account.html" class="nav-btn nav-btn-primary" id="btn-dashboard">Dashboard</a>
+            </div>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </nav>
+        <div class="mobile-nav" id="mobile-nav">
+            <a href="home.html">🏠 Home</a>
+            <a href="services.html">⚡ Services</a>
+            <a href="contact.html">📬 Contact</a>
+            <a href="account.html">👤 Account</a>
+            <a href="login.html">🔑 Sign In</a>
+        </div>
+
+        <!-- PAGE HEADER -->
+        <div class="page-header">
+            <div class="page-header-content">
+                <div class="badge badge-green fade-in-up delay-1">⚡ All Services</div>
+                <h1 class="page-title fade-in-up delay-2">Smart <span class="green">Services Hub</span></h1>
+                <p class="page-desc fade-in-up delay-3">Everything you need for your academic journey — powered by AI
+                    and designed for students.</p>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════ SECTION: AI SUITE -->
+        <section class="services-section" id="ai-suite">
+            <div class="section-header fade-in-up">
+                <div class="section-icon">🧠</div>
+                <div>
+                    <div class="section-title">Smart Intelligence Suite</div>
+                    <div class="section-sub">AI-powered tools to supercharge your learning</div>
+                </div>
+            </div>
+
+            <div class="ai-suite-grid">
+                <!-- AI Doubt Analyzer -->
+                <div class="ai-card glass-card fade-in-up delay-1" id="doubt-card">
+                    <div class="ai-card-top">
+                        <div class="ai-icon-wrap"
+                            style="background:rgba(186,255,141,0.1);border-color:rgba(186,255,141,0.3)">
+                            <span>🔍</span>
+                        </div>
+                        <div class="ai-badge badge badge-green">Active</div>
+                    </div>
+                    <h3 class="ai-title">AI Doubt Analyzer</h3>
+                    <p class="ai-desc">Submit your academic doubts and get instant, detailed explanations powered by AI.
+                        Supports all engineering subjects.</p>
+                    <div class="ai-doubt-input">
+                        <textarea id="doubt-input" class="input-field" rows="3"
+                            placeholder="Type your doubt here... e.g., Explain Big O notation"></textarea>
+                        <button class="btn btn-primary" onclick="analyzeDoubt()"
+                            style="width:100%;justify-content:center;margin-top:10px">
+                            🔍 Analyze Doubt
+                        </button>
+                    </div>
+                    <div class="ai-result" id="doubt-result" style="display:none"></div>
+                </div>
+
+                <!-- AI Study Planner -->
+                <div class="ai-card glass-card fade-in-up delay-2">
+                    <div class="ai-card-top">
+                        <div class="ai-icon-wrap"
+                            style="background:rgba(100,180,255,0.1);border-color:rgba(100,180,255,0.3)">
+                            <span>📅</span>
+                        </div>
+                        <div class="ai-badge badge badge-blue">Beta</div>
+                    </div>
+                    <h3 class="ai-title">AI Study Planner</h3>
+                    <p class="ai-desc">Generate a personalized study schedule based on your exam dates, subjects, and
+                        learning pace.</p>
+                    <div class="planner-form">
+                        <input type="text" class="input-field" placeholder="Subjects (e.g., DS, OS, DBMS)"
+                            id="planner-subjects" style="margin-bottom:8px" />
+                        <input type="date" class="input-field" id="planner-date" style="margin-bottom:10px" />
+                        <button class="btn btn-primary" onclick="generatePlan()"
+                            style="width:100%;justify-content:center">
+                            📅 Generate Plan
+                        </button>
+                    </div>
+                    <div class="ai-result" id="planner-result" style="display:none"></div>
+                </div>
+
+                <!-- Learning Style Detection -->
+                <div class="ai-card glass-card fade-in-up delay-3">
+                    <div class="ai-card-top">
+                        <div class="ai-icon-wrap"
+                            style="background:rgba(255,200,80,0.1);border-color:rgba(255,200,80,0.3)">
+                            <span>🎯</span>
+                        </div>
+                        <div class="ai-badge badge badge-amber">Coming Soon</div>
+                    </div>
+                    <h3 class="ai-title">Learning Style Detection</h3>
+                    <p class="ai-desc">Discover your unique learning style — Visual, Auditory, or Kinesthetic — and get
+                        tailored study recommendations.</p>
+                    <div class="coming-soon-overlay">
+                        <div class="cs-content">
+                            <span class="cs-icon">🚀</span>
+                            <p>Launching Q2 2025</p>
+                            <button class="btn btn-ghost" onclick="notifyMe()" style="margin-top:10px">🔔 Notify
+                                Me</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════ SECTION: ACADEMIC -->
+        <section class="services-section" id="academic">
+            <div class="section-header fade-in-up">
+                <div class="section-icon">📚</div>
+                <div>
+                    <div class="section-title">Academic Assistance</div>
+                    <div class="section-sub">Quick access to all academic resources</div>
+                </div>
+            </div>
+
+            <div class="service-cards-grid">
+                <div class="service-card glass-card fade-in-up delay-1" onclick="openModal('courses-modal')">
+                    <div class="sc-icon">📖</div>
+                    <div class="sc-info">
+                        <h4 class="sc-title">Courses & Syllabus</h4>
+                        <p class="sc-desc">Browse all department syllabi and course materials</p>
+                    </div>
+                    <span class="sc-arrow">→</span>
+                </div>
+                <div class="service-card glass-card fade-in-up delay-2" onclick="openModal('exams-modal')">
+                    <div class="sc-icon">📝</div>
+                    <div class="sc-info">
+                        <h4 class="sc-title">Exams & Results</h4>
+                        <p class="sc-desc">Timetables, hall tickets, and result portal</p>
+                    </div>
+                    <span class="sc-arrow">→</span>
+                </div>
+                <div class="service-card glass-card fade-in-up delay-3" onclick="openModal('attendance-modal')">
+                    <div class="sc-icon">✅</div>
+                    <div class="sc-info">
+                        <h4 class="sc-title">Attendance Rules</h4>
+                        <p class="sc-desc">Policies, medical leave, and attendance tracker</p>
+                    </div>
+                    <span class="sc-arrow">→</span>
+                </div>
+                <div class="service-card glass-card fade-in-up delay-4" onclick="openModal('calendar-modal')">
+                    <div class="sc-icon">📆</div>
+                    <div class="sc-info">
+                        <h4 class="sc-title">Academic Calendar</h4>
+                        <p class="sc-desc">Semester dates, holidays, and events</p>
+                    </div>
+                    <span class="sc-arrow">→</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════ SECTION: COLLEGE SERVICES -->
+        <section class="services-section" id="college-services">
+            <div class="section-header fade-in-up">
+                <div class="section-icon">🏛️</div>
+                <div>
+                    <div class="section-title">College Services Support</div>
+                    <div class="section-sub">Administrative and support services at your fingertips</div>
+                </div>
+            </div>
+
+            <div class="service-cards-grid">
+                <div class="service-card glass-card fade-in-up delay-1" onclick="openModal('admissions-modal')">
+                    <div class="sc-icon">🎓</div>
+                    <div class="sc-info">
+                        <h4 class="sc-title">Admissions Guidance</h4>
+                        <p class="sc-desc">TNEA, TANCET, management quota procedures</p>
+                    </div>
+                    <span class="sc-arrow">→</span>
+                </div>
+                <div class="service-card glass-card fade-in-up delay-2" onclick="openModal('docs-modal')">
+                    <div class="sc-icon">📄</div>
+                    <div class="sc-info">
+                        <h4 class="sc-title">Document Assistance</h4>
+                        <p class="sc-desc">Bonafide, TC, and other certificate requests</p>
+                    </div>
+                    <span class="sc-arrow">→</span>
+                </div>
+                <div class="service-card glass-card fade-in-up delay-3" onclick="openModal('faculty-modal')">
+                    <div class="sc-icon">👨‍🏫</div>
+                    <div class="sc-info">
+                        <h4 class="sc-title">Faculty Directory</h4>
+                        <p class="sc-desc">Contact information for all faculty members</p>
+                    </div>
+                    <span class="sc-arrow">→</span>
+                </div>
+                <div class="service-card glass-card fade-in-up delay-4" onclick="openModal('placement-modal')">
+                    <div class="sc-icon">💼</div>
+                    <div class="sc-info">
+                        <h4 class="sc-title">Placement Info</h4>
+                        <p class="sc-desc">Recruiters, packages, and training programs</p>
+                    </div>
+                    <span class="sc-arrow">→</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-brand">D.esk <span>AI</span></div>
+            <div class="footer-links">
+                <a href="home.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+                <a href="login.html">Login</a>
+            </div>
+            <p class="footer-text">© 2025 D.esk AI · Stella Mary's College of Engineering · by smce students</p>
+        </footer>
+    </div>
+
+    <!-- ══════════════════════════════════════ MODALS -->
+    <div class="modal-overlay" id="modal-overlay" onclick="closeModal()">
+        <div class="modal glass-card-2" id="modal-box" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="js/global.js"></script>
+    <script src="js/services.js"></script>
+</body>
+
+</html>

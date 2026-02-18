@@ -1,0 +1,229 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   D.esk AI — Loading Page Styles (Matching Reference)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --green-bg: #4a8d5e;
+  --green-accent: #baff8d;
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --font: 'Outfit', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  background: linear-gradient(135deg, #57a16f 0%, #3e7a50 100%);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Loader Container ──────────────────────────────────────────────────── */
+.loader-container {
+  perspective: 1000px;
+  z-index: 10;
+}
+
+.loading-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  padding: 60px 50px;
+  width: 480px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  animation: cardEntrance 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Logo ─────────────────────────────────────────────────────────────── */
+.logo-area {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.college-logo {
+  width: 110px;
+  height: 110px;
+  background: white;
+  border-radius: 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Content ─────────────────────────────────────────────────────────── */
+.welcome-text {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+.college-name {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: white;
+  opacity: 0.8;
+  margin-bottom: 50px;
+}
+
+/* ── Loading Status ──────────────────────────────────────────────────── */
+.loading-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.dot.big {
+  width: 16px;
+  height: 16px;
+  opacity: 1;
+  animation: dotPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes dotPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.3);
+    opacity: 0.7;
+  }
+}
+
+.status-text {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+  opacity: 0.9;
+}
+
+/* ── Enter Button ────────────────────────────────────────────────────── */
+.enter-btn {
+  margin-top: 30px;
+  background: var(--green-accent);
+  color: #0d2416;
+  border: none;
+  border-radius: 15px;
+  padding: 16px 40px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.enter-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Background Robot ─────────────────────────────────────────────────── */
+.robot-bg {
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  opacity: 0.1;
+  transform: rotate(-15deg);
+  pointer-events: none;
+}
+
+.robot-body {
+  width: 200px;
+  height: 250px;
+  background: white;
+  border-radius: 40px;
+}
+
+.robot-head {
+  width: 160px;
+  height: 120px;
+  background: #222;
+  border-radius: 30px;
+  position: relative;
+  top: -40px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+}
+
+.robot-eye {
+  width: 30px;
+  height: 30px;
+  background: var(--green-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--green-accent);
+}
