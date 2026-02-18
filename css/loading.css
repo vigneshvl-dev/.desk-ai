@@ -97,10 +97,10 @@ body {
 }
 
 /* ── Logo ─────────────────────────────────────────────────────────────── */
-.logo-area {
   margin-bottom: 40px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
   width: 72px;
