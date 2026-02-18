@@ -42,6 +42,7 @@ body {
     min-height: 100vh;
     color: var(--text);
     overflow-x: hidden;
+    zoom: 150%;
 }
 
 /* ── Scrollbar ─────────────────────────────────────────────────────────── */
