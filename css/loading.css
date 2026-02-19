@@ -1,0 +1,282 @@
+/* Animated fade-in for second logo and text */
+.animated-fade-in {
+  opacity: 0;
+  animation: fadeInLogo 1.2s 1.2s forwards;
+}
+
+@keyframes fadeInLogo {
+  from { opacity: 0; transform: translateY(24px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.second-logo {
+  width: 48px;
+  height: 48px;
+  margin: 12px auto 0 auto;
+  padding: 2px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.second-title {
+  font-size: 0.95rem;
+  color: #fff;
+  margin-top: 6px;
+  text-align: center;
+  opacity: 0.85;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+/* ═══════════════════════════════════════════════════════════════════════════
+   D.esk AI — Loading Page Styles (Matching Reference)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --green-bg: #4a8d5e;
+  --green-accent: #baff8d;
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --font: 'Outfit', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  background: linear-gradient(135deg, #57a16f 0%, #3e7a50 100%);
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  zoom: 125%;
+}
+
+/* ── Loader Container ──────────────────────────────────────────────────── */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  z-index: 1000;
+}
+
+
+.robot-bg {
+  pointer-events: none;
+  z-index: 1;
+}
+
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  padding: 32px 20px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+  animation: cardEntrance 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  ]
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Logo ─────────────────────────────────────────────────────────────── */
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+  width: 72px;
+  height: 72px;
+  background: white;
+  border-radius: 50%;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.college-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  margin-top: 10px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* ── Content ─────────────────────────────────────────────────────────── */
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 18px;
+  opacity: 0.95;
+}
+
+.college-name {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: white;
+  opacity: 0.8;
+  margin-bottom: 50px;
+}
+
+/* ── Loading Status ──────────────────────────────────────────────────── */
+.loading-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.dot.big {
+  width: 16px;
+  height: 16px;
+  opacity: 1;
+  animation: dotPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes dotPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.3);
+    opacity: 0.7;
+  }
+}
+
+.status-text {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+  opacity: 0.9;
+}
+
+/* ── Enter Button ────────────────────────────────────────────────────── */
+.enter-btn {
+  margin-top: 30px;
+  background: var(--green-accent);
+  color: #0d2416;
+  border: none;
+  border-radius: 15px;
+  padding: 16px 40px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.enter-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  filter: brightness(1.1);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Background Robot ─────────────────────────────────────────────────── */
+.robot-bg {
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  opacity: 0.1;
+  transform: rotate(-15deg);
+  pointer-events: none;
+}
+
+.robot-body {
+  width: 200px;
+  height: 250px;
+  background: white;
+  border-radius: 40px;
+}
+
+.robot-head {
+  width: 160px;
+  height: 120px;
+  background: #222;
+  border-radius: 30px;
+  position: relative;
+  top: -40px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+}
+
+.robot-eye {
+  width: 30px;
+  height: 30px;
+  background: var(--green-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--green-accent);
+}

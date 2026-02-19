@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Account – D.esk AI | Stella Mary's College of Engineering</title>
+    <meta name="description"
+        content="Your D.esk AI student dashboard – GPA, attendance, credits, exam countdown, and settings." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/account.css" />
+</head>
+
+<body>
+
+    <canvas id="neural-bg"></canvas>
+
+    <div class="page-wrapper">
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+            <a href="home.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <img src="https://i.postimg.cc/c1tz21fv/SMCOE-Autonomous-Anna-(1).png" alt="Stella Mary's College of Engineering Logo" class="nav-college-logo" />
+                </div>
+                <div class="nav-brand">
+                    <span class="nav-brand-name">D.esk <span>AI</span></span>
+                    <span class="nav-brand-sub">Stella Mary's College of Engineering</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="home.html" id="nav-home">🏠 Home</a></li>
+                <li><a href="services.html" id="nav-services">⚡ Services</a></li>
+                <li><a href="contact.html" id="nav-contact">📬 Contact</a></li>
+                <li><a href="account.html" class="active" id="nav-account">👤 Account</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-btn nav-btn-outline" onclick="logout()" id="btn-logout">Sign Out</button>
+                <a href="account.html" class="nav-btn nav-btn-primary" id="btn-dashboard">Dashboard</a>
+            </div>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </nav>
+        <div class="mobile-nav" id="mobile-nav">
+            <a href="home.html">🏠 Home</a>
+            <a href="services.html">⚡ Services</a>
+            <a href="contact.html">📬 Contact</a>
+            <a href="account.html">👤 Account</a>
+            <a href="#" onclick="logout()">🚪 Sign Out</a>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════ DASHBOARD -->
+        <div class="dashboard">
+
+            <!-- ── Sidebar ── -->
+            <aside class="sidebar glass-card-2">
+                <div class="profile-section">
+                    <div class="avatar-wrap">
+                        <div class="avatar" id="user-avatar">A</div>
+                        <div class="avatar-badge">🎓</div>
+                    </div>
+                    <h3 class="profile-name" id="profile-name">Loading...</h3>
+                    <p class="profile-id" id="profile-id">--</p>
+                    <div class="profile-badges">
+                        <span class="badge badge-green" id="profile-dept">CSE</span>
+                        <span class="badge badge-blue" id="profile-type">Hostel</span>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <nav class="sidebar-nav">
+                    <a href="#overview" class="sidebar-link active" onclick="showSection('overview', this)">
+                        <span>📊</span> Overview
+                    </a>
+                    <a href="#academics" class="sidebar-link" onclick="showSection('academics', this)">
+                        <span>📚</span> Academics
+                    </a>
+                    <a href="#ai-tools" class="sidebar-link" onclick="showSection('ai-tools', this)">
+                        <span>🧠</span> AI Tools
+                    </a>
+                    <a href="#settings" class="sidebar-link" onclick="showSection('settings', this)">
+                        <span>⚙️</span> Settings
+                    </a>
+                </nav>
+
+                <div class="divider"></div>
+
+                <button class="btn btn-danger sidebar-logout" onclick="logout()">
+                    🚪 Sign Out
+                </button>
+            </aside>
+
+            <!-- ── Main Content ── -->
+            <main class="dashboard-main">
+
+                <!-- ══════════════════════════════════ OVERVIEW SECTION -->
+                <div id="section-overview" class="dash-section">
+
+                    <!-- Welcome bar -->
+                    <div class="welcome-bar fade-in-up">
+                        <div>
+                            <h1 class="welcome-title">Good <span class="green" id="greeting-time">Morning</span>, <span
+                                    id="welcome-name">Student</span>! 👋</h1>
+                            <p class="welcome-sub">Here's your academic snapshot for today</p>
+                        </div>
+                        <div class="welcome-date" id="welcome-date"></div>
+                    </div>
+
+                    <!-- Stats grid -->
+                    <div class="stats-grid">
+
+                        <!-- GPA Gauge -->
+                        <div class="stat-card glass-card fade-in-up delay-1">
+                            <div class="stat-card-header">
+                                <div class="section-icon">📊</div>
+                                <div>
+                                    <div class="section-title">Current GPA</div>
+                                    <div class="section-sub">This semester</div>
+                                </div>
+                            </div>
+                            <div class="gauge-wrap">
+                                <svg class="gauge-svg" width="120" height="120" viewBox="0 0 120 120">
+                                    <circle class="gauge-track" cx="60" cy="60" r="50" stroke-width="10" />
+                                    <circle class="gauge-fill" id="gpa-gauge" cx="60" cy="60" r="50" stroke-width="10"
+                                        stroke-dasharray="314" stroke-dashoffset="314" />
+                                </svg>
+                                <div class="gauge-center">
+                                    <span class="gauge-value green" id="gpa-value">--</span>
+                                    <span class="gauge-max">/10</span>
+                                </div>
+                            </div>
+                            <div class="gauge-label">
+                                <span class="badge badge-green" id="gpa-grade">--</span>
+                            </div>
+                        </div>
+
+                        <!-- Attendance -->
+                        <div class="stat-card glass-card fade-in-up delay-2">
+                            <div class="stat-card-header">
+                                <div class="section-icon">✅</div>
+                                <div>
+                                    <div class="section-title">Attendance</div>
+                                    <div class="section-sub">Current semester</div>
+                                </div>
+                            </div>
+                            <div class="big-stat">
+                                <span class="big-num green" id="att-value">--%</span>
+                            </div>
+                            <div class="progress-bar-wrap" style="margin-top:12px">
+                                <div class="progress-bar-track">
+                                    <div class="progress-bar-fill" id="att-bar" style="width:0%"></div>
+                                </div>
+                            </div>
+                            <div class="stat-note" id="att-note">Loading...</div>
+                        </div>
+
+                        <!-- Credits -->
+                        <div class="stat-card glass-card fade-in-up delay-3">
+                            <div class="stat-card-header">
+                                <div class="section-icon">🏆</div>
+                                <div>
+                                    <div class="section-title">Credits Earned</div>
+                                    <div class="section-sub">Degree progress</div>
+                                </div>
+                            </div>
+                            <div class="big-stat">
+                                <span class="big-num green" id="credits-value">--</span>
+                                <span class="big-denom" id="credits-total">/120</span>
+                            </div>
+                            <div class="progress-bar-wrap" style="margin-top:12px">
+                                <div class="progress-bar-track">
+                                    <div class="progress-bar-fill" id="credits-bar" style="width:0%"></div>
+                                </div>
+                            </div>
+                            <div class="stat-note" id="credits-note">Loading...</div>
+                        </div>
+
+                        <!-- Exam Countdown -->
+                        <div class="stat-card glass-card fade-in-up delay-4 exam-card">
+                            <div class="stat-card-header">
+                                <div class="section-icon">⏰</div>
+                                <div>
+                                    <div class="section-title">Next Exam</div>
+                                    <div class="section-sub">Internal Assessment</div>
+                                </div>
+                            </div>
+                            <div class="countdown-display">
+                                <div class="countdown-num" id="exam-days">--</div>
+                                <div class="countdown-label">days left</div>
+                            </div>
+                            <div class="exam-info">
+                                <div class="exam-date" id="exam-date">--</div>
+                                <div class="exam-name">Internal Assessment 1</div>
+                            </div>
+                            <div class="exam-progress">
+                                <div class="progress-bar-track">
+                                    <div class="progress-bar-fill" id="exam-bar"
+                                        style="width:0%;background:linear-gradient(90deg,#ff8c50,#ffc850)"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick actions -->
+                    <div class="quick-actions fade-in-up delay-5">
+                        <h3 class="qa-title">Quick Actions</h3>
+                        <div class="qa-grid">
+                            <button class="qa-btn" onclick="window.location='home.html'">🤖 Ask AI</button>
+                            <button class="qa-btn"
+                                onclick="showSection('academics', document.querySelector('[onclick*=academics]'))">📚
+                                Academics</button>
+                            <button class="qa-btn" onclick="window.location='services.html'">⚡ Services</button>
+                            <button class="qa-btn"
+                                onclick="showSection('settings', document.querySelector('[onclick*=settings]'))">⚙️
+                                Settings</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ══════════════════════════════════ ACADEMICS SECTION -->
+                <div id="section-academics" class="dash-section" style="display:none">
+                    <div class="welcome-bar fade-in-up">
+                        <div>
+                            <h2 class="welcome-title">📚 Academic <span class="green">Records</span></h2>
+                            <p class="welcome-sub">Your complete academic performance</p>
+                        </div>
+                    </div>
+
+                    <!-- Subject-wise performance -->
+                    <div class="glass-card section-card fade-in-up delay-1">
+                        <div class="section-header">
+                            <div class="section-icon">📋</div>
+                            <div>
+                                <div class="section-title">Subject Performance</div>
+                                <div class="section-sub">Current semester grades</div>
+                            </div>
+                        </div>
+                        <div class="subject-table-wrap">
+                            <table class="subject-table">
+                                <thead>
+                                    <tr>
+                                        <th>Subject</th>
+                                        <th>Code</th>
+                                        <th>Credits</th>
+                                        <th>IA1</th>
+                                        <th>IA2</th>
+                                        <th>Grade</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="subject-tbody">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Semester history -->
+                    <div class="glass-card section-card fade-in-up delay-2">
+                        <div class="section-header">
+                            <div class="section-icon">📈</div>
+                            <div>
+                                <div class="section-title">GPA History</div>
+                                <div class="section-sub">Semester-wise performance</div>
+                            </div>
+                        </div>
+                        <div class="gpa-history" id="gpa-history">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ══════════════════════════════════ AI TOOLS SECTION -->
+                <div id="section-ai-tools" class="dash-section" style="display:none">
+                    <div class="welcome-bar fade-in-up">
+                        <div>
+                            <h2 class="welcome-title">🧠 AI <span class="green">Tools</span></h2>
+                            <p class="welcome-sub">Smart intelligence suite for your studies</p>
+                        </div>
+                    </div>
+
+                    <div class="ai-tools-grid">
+                        <div class="glass-card section-card fade-in-up delay-1">
+                            <div class="section-header">
+                                <div class="section-icon">🔍</div>
+                                <div>
+                                    <div class="section-title">AI Doubt Analyzer</div>
+                                </div>
+                            </div>
+                            <textarea id="dash-doubt" class="input-field" rows="3"
+                                placeholder="Type your academic doubt..."></textarea>
+                            <button class="btn btn-primary" style="margin-top:10px;width:100%;justify-content:center"
+                                onclick="dashAnalyzeDoubt()">
+                                🔍 Analyze
+                            </button>
+                            <div class="ai-result" id="dash-doubt-result" style="display:none;margin-top:12px"></div>
+                        </div>
+
+                        <div class="glass-card section-card fade-in-up delay-2">
+                            <div class="section-header">
+                                <div class="section-icon">📅</div>
+                                <div>
+                                    <div class="section-title">Study Planner</div>
+                                    <div class="section-sub badge badge-blue" style="margin-top:4px">Beta</div>
+                                </div>
+                            </div>
+                            <input type="text" id="dash-subjects" class="input-field"
+                                placeholder="Subjects (comma separated)" style="margin-bottom:8px" />
+                            <input type="date" id="dash-exam-date" class="input-field" style="margin-bottom:10px" />
+                            <button class="btn btn-primary" style="width:100%;justify-content:center"
+                                onclick="dashGeneratePlan()">
+                                📅 Generate Plan
+                            </button>
+                            <div class="ai-result" id="dash-plan-result" style="display:none;margin-top:12px"></div>
+                        </div>
+
+                        <div class="glass-card section-card fade-in-up delay-3" style="opacity:0.7">
+                            <div class="section-header">
+                                <div class="section-icon">🎯</div>
+                                <div>
+                                    <div class="section-title">Learning Style</div>
+                                    <div class="section-sub badge badge-amber" style="margin-top:4px">Coming Soon</div>
+                                </div>
+                            </div>
+                            <p style="font-size:0.85rem;color:var(--text-dim);line-height:1.7">Discover your learning
+                                style and get personalized study recommendations. Launching Q2 2025.</p>
+                            <button class="btn btn-ghost" style="margin-top:12px"
+                                onclick="showToast('You\'ll be notified when this launches! 🚀','success')">🔔 Notify
+                                Me</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ══════════════════════════════════ SETTINGS SECTION -->
+                <div id="section-settings" class="dash-section" style="display:none">
+                    <div class="welcome-bar fade-in-up">
+                        <div>
+                            <h2 class="welcome-title">⚙️ <span class="green">Settings</span></h2>
+                            <p class="welcome-sub">Manage your profile and preferences</p>
+                        </div>
+                    </div>
+
+                    <div class="settings-grid">
+
+                        <!-- Profile Settings -->
+                        <div class="glass-card section-card fade-in-up delay-1">
+                            <div class="section-header">
+                                <div class="section-icon">👤</div>
+                                <div>
+                                    <div class="section-title">Profile Information</div>
+                                </div>
+                            </div>
+                            <div class="profile-form">
+                                <div class="form-group">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" id="set-name" class="input-field" />
+                                </div>
+                                <div class="form-row-2">
+                                    <div class="form-group">
+                                        <label class="form-label">Student ID</label>
+                                        <input type="text" id="set-id" class="input-field" readonly
+                                            style="opacity:0.6" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Department</label>
+                                        <input type="text" id="set-dept" class="input-field" readonly
+                                            style="opacity:0.6" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" id="set-email" class="input-field" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Phone</label>
+                                    <input type="tel" id="set-phone" class="input-field"
+                                        placeholder="+91 XXXXX XXXXX" />
+                                </div>
+                                <button class="btn btn-primary" onclick="saveProfile()" id="save-profile-btn">
+                                    💾 Save Profile
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Notification Preferences -->
+                        <div class="glass-card section-card fade-in-up delay-2">
+                            <div class="section-header">
+                                <div class="section-icon">🔔</div>
+                                <div>
+                                    <div class="section-title">Notification Preferences</div>
+                                </div>
+                            </div>
+
+                            <div class="toggle-wrap">
+                                <div class="toggle-info">
+                                    <span class="toggle-label">📧 Email Notifications</span>
+                                    <span class="toggle-desc">Receive updates via email</span>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" id="notif-email" checked onchange="savePrefs()" />
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="toggle-wrap">
+                                <div class="toggle-info">
+                                    <span class="toggle-label">📱 SMS Notifications</span>
+                                    <span class="toggle-desc">Receive SMS alerts on your phone</span>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" id="notif-sms" onchange="savePrefs()" />
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="toggle-wrap">
+                                <div class="toggle-info">
+                                    <span class="toggle-label">⏰ Exam Reminders</span>
+                                    <span class="toggle-desc">Get reminders 3 days before exams</span>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" id="notif-exam" checked onchange="savePrefs()" />
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="toggle-wrap">
+                                <div class="toggle-info">
+                                    <span class="toggle-label">📊 Attendance Alerts</span>
+                                    <span class="toggle-desc">Alert when attendance drops below 80%</span>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" id="notif-att" checked onchange="savePrefs()" />
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="toggle-wrap">
+                                <div class="toggle-info">
+                                    <span class="toggle-label">🏆 Result Notifications</span>
+                                    <span class="toggle-desc">Notify when results are published</span>
+                                </div>
+                                <label class="toggle">
+                                    <input type="checkbox" id="notif-result" checked onchange="savePrefs()" />
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+
+                            <button class="btn btn-primary" style="margin-top:16px;width:100%;justify-content:center"
+                                onclick="saveSettings()">
+                                💾 Save Settings
+                            </button>
+                        </div>
+
+                        <!-- Account Security -->
+                        <div class="glass-card section-card fade-in-up delay-3">
+                            <div class="section-header">
+                                <div class="section-icon">🔐</div>
+                                <div>
+                                    <div class="section-title">Account Security</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Current Password</label>
+                                <input type="password" id="cur-pass" class="input-field"
+                                    placeholder="Enter current password" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">New Password</label>
+                                <input type="password" id="new-pass" class="input-field"
+                                    placeholder="Min. 8 characters" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Confirm New Password</label>
+                                <input type="password" id="conf-pass" class="input-field"
+                                    placeholder="Repeat new password" />
+                            </div>
+                            <button class="btn btn-primary" onclick="changePassword()">🔑 Change Password</button>
+                            <div class="divider"></div>
+                            <button class="btn btn-danger" onclick="confirmLogout()">🚪 Sign Out of All Devices</button>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-brand">D.esk <span>AI</span></div>
+            <div class="footer-links">
+                <a href="home.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <!-- Social links removed as requested -->
+            <p class="footer-text">© 2026 D.esk AI · Stella Mary's College of Engineering · by Jashwin J ,Vignesh V L
+            </p></p>
+        </footer>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="js/global.js"></script>
+    <script src="js/account.js"></script>
+</body>
+
+</html>
