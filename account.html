@@ -353,6 +353,15 @@
                                 </div>
                             </div>
                             <div class="profile-form">
+                                                                <div class="form-group" style="text-align:center">
+                                                                    <label class="form-label">Profile Image</label>
+                                                                    <div style="margin-bottom:8px">
+                                                                        <img id="profile-img-preview" src="https://i.postimg.cc/SKGqK7x5/IMG-33081.jpg" alt="Profile Image" style="width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px rgba(0,0,0,0.10);background:#f3f3f3;" />
+                                                                    </div>
+                                                                    <input type="file" id="profile-img-input" accept="image/*" style="display:none" onchange="onProfileImgChange(event)" />
+                                                                    <button class="btn btn-secondary" type="button" onclick="document.getElementById('profile-img-input').click()">Edit</button>
+                                                                    <button class="btn btn-danger" type="button" style="margin-left:8px" onclick="removeProfileImg()">Delete</button>
+                                                                </div>
                                 <div class="form-group">
                                     <label class="form-label">Full Name</label>
                                     <input type="text" id="set-name" class="input-field" />
