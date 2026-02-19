@@ -54,7 +54,14 @@ function renderProfile() {
     setText('profile-dept', u.dept);
     setText('profile-type', u.type === 'Hostel Student' ? '🏠 Hostel' : '🌞 Day Scholar');
     const avatar = document.getElementById('user-avatar');
-    if (avatar) avatar.textContent = u.name.charAt(0).toUpperCase();
+    if (avatar) {
+        const img = localStorage.getItem('desk_ai_profile_img');
+        if (img) {
+            avatar.innerHTML = `<img src="${img}" alt="Profile" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" />`;
+        } else {
+            avatar.textContent = u.name.charAt(0).toUpperCase();
+        }
+    }
 }
 
 /* ── Stats ─────────────────────────────────────────────────────────────── */
@@ -161,6 +168,31 @@ function renderAcademics() {
 
 /* ── Settings ──────────────────────────────────────────────────────────── */
 function renderSettings() {
+        // Profile image preview
+        const imgPrev = document.getElementById('profile-img-preview');
+        if (imgPrev) {
+            const img = localStorage.getItem('desk_ai_profile_img');
+            imgPrev.src = img || 'https://i.postimg.cc/SKGqK7x5/IMG-33081.jpg';
+        }
+
+    // Profile image upload/edit/delete
+    function onProfileImgChange(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+            localStorage.setItem('desk_ai_profile_img', evt.target.result);
+            document.getElementById('profile-img-preview').src = evt.target.result;
+            renderProfile();
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function removeProfileImg() {
+        localStorage.removeItem('desk_ai_profile_img');
+        document.getElementById('profile-img-preview').src = 'https://i.postimg.cc/SKGqK7x5/IMG-33081.jpg';
+        renderProfile();
+    }
     const u = currentUser;
     setVal('set-name', u.name);
     setVal('set-id', u.id);

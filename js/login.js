@@ -84,7 +84,7 @@ async function handleLogin(e) {
     if (user) {
         setUser(user);
         showToast(`Welcome back, ${user.name.split(' ')[0]}! 🎉`, 'success');
-        setTimeout(() => { window.location.href = 'account.html'; }, 1000);
+        setTimeout(() => { window.location.href = 'home.html'; }, 1000);
     } else {
         showToast('Invalid credentials. Try: 24CSE001 / demo123', 'error', 5000);
         btn.disabled = false;
