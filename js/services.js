@@ -156,8 +156,77 @@ function closeModal() {
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-/* ── Notify Me ─────────────────────────────────────────────────────────── */
-function notifyMe() {
-  showToast('You will be notified of new updates! 🚀', 'success', 4000);
+/* ── AI Doubt Analyzer ─────────────────────────────────────────────────── */
+const doubtResponses = {
+  'big o': 'Big O notation describes the upper bound of an algorithm\'s time complexity. O(1) = constant, O(n) = linear, O(n²) = quadratic. Example: Linear search is O(n), Binary search is O(log n).',
+  'recursion': 'Recursion is when a function calls itself. It needs a base case to stop. Example: factorial(n) = n × factorial(n-1), with base case factorial(0) = 1.',
+  'pointer': 'A pointer stores the memory address of another variable. In C: int *p = &x; — p holds the address of x, *p dereferences to get the value.',
+  'sql': 'SQL (Structured Query Language) is used to manage relational databases. Key commands: SELECT (read), INSERT (add), UPDATE (modify), DELETE (remove), JOIN (combine tables).',
+  'osi': 'The OSI model has 7 layers: Physical, Data Link, Network, Transport, Session, Presentation, Application. Remember: "Please Do Not Throw Sausage Pizza Away"',
+  'default': 'Great question! This topic involves several key concepts. I recommend breaking it down into smaller parts and reviewing your textbook chapter on this subject. Would you like me to explain a specific aspect?'
+};
+
+async function analyzeDoubt() {
+  const input = document.getElementById('doubt-input').value.trim();
+  const result = document.getElementById('doubt-result');
+  if (!input) { showToast('Please enter your doubt first', 'warn'); return; }
+
+  result.style.display = 'block';
+  result.innerHTML = '<div style="color:var(--green)">🔍 Analyzing your doubt...</div>';
+
+  await new Promise(r => setTimeout(r, 1200));
+
+  const key = Object.keys(doubtResponses).find(k => input.toLowerCase().includes(k));
+  const response = doubtResponses[key || 'default'];
+
+  result.innerHTML = `
+    <div style="color:var(--green);font-weight:600;margin-bottom:8px">💡 AI Analysis:</div>
+    <p style="color:var(--text-dim);line-height:1.7">${response}</p>
+    <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--glass-border);font-size:0.75rem;color:var(--text-muted)">
+      ⚡ Powered by D.esk AI · For detailed explanation, visit your subject faculty
+    </div>
+  `;
+  showToast('Doubt analyzed successfully!', 'success');
 }
 
+/* ── AI Study Planner ──────────────────────────────────────────────────── */
+async function generatePlan() {
+  const subjects = document.getElementById('planner-subjects').value.trim();
+  const date = document.getElementById('planner-date').value;
+  const result = document.getElementById('planner-result');
+
+  if (!subjects || !date) { showToast('Please fill in subjects and exam date', 'warn'); return; }
+
+  result.style.display = 'block';
+  result.innerHTML = '<div style="color:var(--green)">📅 Generating your study plan...</div>';
+
+  await new Promise(r => setTimeout(r, 1500));
+
+  const subList = subjects.split(',').map(s => s.trim()).filter(Boolean);
+  const examDate = new Date(date);
+  const today = new Date();
+  const daysLeft = Math.max(1, Math.ceil((examDate - today) / (1000 * 60 * 60 * 24)));
+  const daysPerSub = Math.max(1, Math.floor(daysLeft / subList.length));
+
+  let planHTML = `<div style="color:var(--green);font-weight:600;margin-bottom:10px">📅 Your Study Plan (${daysLeft} days left)</div>`;
+  subList.forEach((sub, i) => {
+    const start = new Date(today);
+    start.setDate(today.getDate() + i * daysPerSub);
+    const end = new Date(start);
+    end.setDate(start.getDate() + daysPerSub - 1);
+    planHTML += `
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--glass-border)">
+        <span style="font-weight:600;color:var(--text)">${sub}</span>
+        <span style="font-size:0.78rem;color:var(--text-muted)">${start.toLocaleDateString('en-IN')} – ${end.toLocaleDateString('en-IN')}</span>
+      </div>
+    `;
+  });
+  planHTML += `<div style="margin-top:10px;font-size:0.75rem;color:var(--text-muted)">💡 Tip: Revise each subject 2 days before the exam</div>`;
+  result.innerHTML = planHTML;
+  showToast('Study plan generated!', 'success');
+}
+
+/* ── Notify Me ─────────────────────────────────────────────────────────── */
+function notifyMe() {
+  showToast('You\'ll be notified when Learning Style Detection launches! 🚀', 'success', 4000);
+}

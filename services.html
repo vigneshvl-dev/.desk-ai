@@ -62,6 +62,88 @@
             </div>
         </div>
 
+        <!-- ══════════════════════════════════════ SECTION: AI SUITE -->
+        <section class="services-section" id="ai-suite">
+            <div class="section-header fade-in-up">
+                <div class="section-icon">🧠</div>
+                <div>
+                    <div class="section-title">Smart Intelligence Suite</div>
+                    <div class="section-sub">AI-powered tools to supercharge your learning</div>
+                </div>
+            </div>
+
+            <div class="ai-suite-grid">
+                <!-- AI Doubt Analyzer -->
+                <div class="ai-card glass-card fade-in-up delay-1" id="doubt-card">
+                    <div class="ai-card-top">
+                        <div class="ai-icon-wrap"
+                            style="background:rgba(186,255,141,0.1);border-color:rgba(186,255,141,0.3)">
+                            <span>🔍</span>
+                        </div>
+                        <div class="ai-badge badge badge-green">Active</div>
+                    </div>
+                    <h3 class="ai-title">AI Doubt Analyzer</h3>
+                    <p class="ai-desc">Submit your academic doubts and get instant, detailed explanations powered by AI.
+                        Supports all engineering subjects.</p>
+                    <div class="ai-doubt-input">
+                        <textarea id="doubt-input" class="input-field" rows="3"
+                            placeholder="Type your doubt here... e.g., Explain Big O notation"></textarea>
+                        <button class="btn btn-primary" onclick="analyzeDoubt()"
+                            style="width:100%;justify-content:center;margin-top:10px">
+                            🔍 Analyze Doubt
+                        </button>
+                    </div>
+                    <div class="ai-result" id="doubt-result" style="display:none"></div>
+                </div>
+
+                <!-- AI Study Planner -->
+                <div class="ai-card glass-card fade-in-up delay-2">
+                    <div class="ai-card-top">
+                        <div class="ai-icon-wrap"
+                            style="background:rgba(100,180,255,0.1);border-color:rgba(100,180,255,0.3)">
+                            <span>📅</span>
+                        </div>
+                        <div class="ai-badge badge badge-blue">Beta</div>
+                    </div>
+                    <h3 class="ai-title">AI Study Planner</h3>
+                    <p class="ai-desc">Generate a personalized study schedule based on your exam dates, subjects, and
+                        learning pace.</p>
+                    <div class="planner-form">
+                        <input type="text" class="input-field" placeholder="Subjects (e.g., DS, OS, DBMS)"
+                            id="planner-subjects" style="margin-bottom:8px" />
+                        <input type="date" class="input-field" id="planner-date" style="margin-bottom:10px" />
+                        <button class="btn btn-primary" onclick="generatePlan()"
+                            style="width:100%;justify-content:center">
+                            📅 Generate Plan
+                        </button>
+                    </div>
+                    <div class="ai-result" id="planner-result" style="display:none"></div>
+                </div>
+
+                <!-- Learning Style Detection -->
+                <div class="ai-card glass-card fade-in-up delay-3">
+                    <div class="ai-card-top">
+                        <div class="ai-icon-wrap"
+                            style="background:rgba(255,200,80,0.1);border-color:rgba(255,200,80,0.3)">
+                            <span>🎯</span>
+                        </div>
+                        <div class="ai-badge badge badge-amber">Coming Soon</div>
+                    </div>
+                    <h3 class="ai-title">Learning Style Detection</h3>
+                    <p class="ai-desc">Discover your unique learning style — Visual, Auditory, or Kinesthetic — and get
+                        tailored study recommendations.</p>
+                    <div class="coming-soon-overlay">
+                        <div class="cs-content">
+                            <span class="cs-icon">🚀</span>
+                            <p>Launching Q2 2026</p>
+                            <button class="btn btn-ghost" onclick="notifyMe()" style="margin-top:10px">🔔 Notify
+                                Me</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ══════════════════════════════════════ SECTION: ACADEMIC -->
         <section class="services-section" id="academic">
             <div class="section-header fade-in-up">
