@@ -24,7 +24,7 @@ git commit -m "Initial high-fidelity build by SMCE students"
 
 echo [4/4] Pushing to GitHub...
 :: Using -u to set upstream for the first time
-git push -u origin main --force
+git push -u origin master --force
 
 echo.
 echo ======================================================
