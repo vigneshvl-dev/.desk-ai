@@ -172,29 +172,29 @@
         <div class="college-logo">
             <img src="https://i.postimg.cc/c1tz21fv/SMCOE-Autonomous-Anna-(1).png" alt="Stella Mary's College of Engineering Logo"/>
         </div>
-        <div class="college-title">Stella Mary’s College of Engineering</div>
-        <div class="typing" id="typing"></div>
-        <div class="spinner"></div>
-        <div class="loading-text">Loading, please wait...</div>
-    </div>
-    <script>
-        // Typing animation for the main text
-        const typingText = "Stella Mary’s College of Engineering";
-        const typingEl = document.getElementById('typing');
-        let idx = 0;
-        function type() {
-            if (idx <= typingText.length) {
-                typingEl.textContent = typingText.slice(0, idx);
-                idx++;
-                setTimeout(type, 38);
+                <div class="college-title">Stella Mary’s College of Engineering</div>
+                <div class="typing" id="typing">Welcome to D.esk AI</div>
+                <div class="spinner"></div>
+                <div class="loading-text">Loading, please wait...</div>
+        </div>
+        <script>
+            // Typing animation for the main text
+            const typingText = "Welcome To D.esk Ai";
+            const typingEl = document.getElementById('typing');
+            let idx = 0;
+            function type() {
+                if (idx <= typingText.length) {
+                    typingEl.textContent = typingText.slice(0, idx);
+                    idx++;
+                    setTimeout(type, 38);
+                }
             }
-        }
-        setTimeout(type, 1700);
+            setTimeout(type, 1700);
 
-        // Redirect after 3 seconds
-        setTimeout(() => {
-            window.location.href = 'login.html';
-        }, 3000);
-    </script>
+            // Redirect after 4 seconds
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 4000);
+        </script>
 </body>
 </html>
